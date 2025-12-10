@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Referral Form</title>
+
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <style>
+        .form-group {
+            margin-bottom: 10px;
+        }
+
+        .remove {
+            margin-left: 10px;
+            color: red;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <form class="form-horizontal">
+        <fieldset>
+
+            <!-- Form Name -->
+            <legend>Referral form | Add below:</legend>
+
+            <!-- Text input-->
+            <div id="items" class="form-group">
+                <label class="col-md-4 control-label" for="textinput">Name</label>
+                <div class="col-md-4 margin-bottom">
+                    <input id="textinput" name="textinput" type="text" placeholder="Enter name of referral"
+                        class="form-control input-md">
+
+                </div>
+            </div>
+
+        </fieldset>
+    </form>
+
+    <button id="add" type="button">+ Add another referral</button>
+
+    <script>
+        $(document).ready(function () {
+
+            // Add new field
+            $("#add").click(function () {
+                $("#items").append(`
+            <div class="form-group">
+                <input type="text" name="name[]" placeholder="Enter name of referral">
+                <button type="button" class="remove">Remove</button>
+            </div>
+        `);
+            });
+
+            // Remove only clicked field
+            $(document).on("click", ".remove", function () {
+                $(this).parent(".form-group").remove();
+            });
+
+        });
+    </script>
+
+</body>
+
+</html>
